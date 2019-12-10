@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ColorFondo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Magenta</Value>
+      <Value Profile="(Default)">LightYellow</Value>
     </Setting>
     <Setting Name="ColorUsuario" Type="System.String" Scope="User">
       <Value Profile="(Default)">LightGreen</Value>

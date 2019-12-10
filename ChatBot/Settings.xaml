@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatBot"
         mc:Ignorable="d"
-        Title="Settings" Height="450" Width="800">
+        Title="Configuracion" Height="250" Width="400" Icon="Imagenes/settingsIcon.ico">
     <Grid>
         
     </Grid>

@@ -25,7 +25,7 @@ namespace ChatBot.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Magenta")]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightYellow")]
         public string ColorFondo {
             get {
                 return ((string)(this["ColorFondo"]));
