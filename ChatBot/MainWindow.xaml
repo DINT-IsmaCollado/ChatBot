@@ -1,0 +1,100 @@
+﻿<Window x:Class="ChatBot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChatBot"
+        xmlns:properties="clr-namespace:ChatBot.Properties"
+        mc:Ignorable="d"
+        Title="ChatBot" Height="600" Width="400" MinWidth="200" MinHeight="300" Icon="Imagenes/R2D2icon.ico">
+    <Window.Resources>
+        <ContextMenu x:Key="EdicionContextMenu">
+            <MenuItem Header="Cortar"></MenuItem>
+            <MenuItem Header="Copiar"></MenuItem>
+            <MenuItem Header="Pegar"></MenuItem>
+        </ContextMenu>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding
+            Command="local:CustomCommands.OpenSettings"
+            Executed="CommandBinding_Executed"
+            CanExecute="CommandBinding_CanExecute">
+            
+        </CommandBinding>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Archivo">
+                <MenuItem Header="_Nueva Conversacion">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/newIcon.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Guardar Conversacion">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/saveIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <Separator/>
+
+                <MenuItem Header="_Salir">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/exitIcon.ico"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </MenuItem>
+
+            <MenuItem Header="_Herramientras">
+                <MenuItem Header="_Configuracion..." Command="local:CustomCommands.OpenSettings">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/settingsIcon.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="C_omprobar Conexión">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/CheckIcon.ico"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button>
+                    <Image Source="Imagenes/newIcon.ico"></Image>
+                </Button>
+                <Button>
+                    <Image Source="Imagenes/saveIcon.ico"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="local:CustomCommands.OpenSettings">
+                    <Image Source="Imagenes/settingsIcon.ico"></Image>
+                </Button>
+                <Button>
+                    <Image Source="Imagenes/checkIcon.ico"></Image>
+                </Button>
+                <Separator/>
+                <Button>
+                    <Image Source="Imagenes/exitIcon.ico"></Image>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Width="400" Height="35">
+            <Border  Width="350" BorderThickness="2" BorderBrush="LightBlue">
+                <TextBox VerticalAlignment="Center" ContextMenu="{StaticResource EdicionContextMenu}"></TextBox>
+            </Border>
+            
+            <Button>
+                <Image Source="Imagenes/sendIcon.ico"></Image>
+            </Button>
+        </StackPanel>
+
+        <ItemsControl Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorFondo}">
+            
+        </ItemsControl>
+    </DockPanel>
+</Window>
