@@ -17,8 +17,12 @@
     <Window.CommandBindings>
         <CommandBinding
             Command="local:CustomCommands.OpenSettings"
-            Executed="CommandBinding_Executed"
-            CanExecute="CommandBinding_CanExecute">
+            Executed="CommandBinding_Executed">
+            
+        </CommandBinding>
+        <CommandBinding
+            Command="local:CustomCommands.Exit"
+            Executed="CommandBinding_Executed_1">
             
         </CommandBinding>
     </Window.CommandBindings>
@@ -38,7 +42,7 @@
 
                 <Separator/>
 
-                <MenuItem Header="_Salir">
+                <MenuItem Header="_Salir" Command="local:CustomCommands.Exit">
                     <MenuItem.Icon>
                         <Image Source="Imagenes/exitIcon.ico"/>
                     </MenuItem.Icon>
@@ -77,7 +81,7 @@
                     <Image Source="Imagenes/checkIcon.ico"></Image>
                 </Button>
                 <Separator/>
-                <Button>
+                <Button Command="local:CustomCommands.Exit">
                     <Image Source="Imagenes/exitIcon.ico"></Image>
                 </Button>
             </ToolBar>

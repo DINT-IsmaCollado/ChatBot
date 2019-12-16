@@ -32,9 +32,10 @@ namespace ChatBot
             ventana.Show();
         }
 
-        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        private void CommandBinding_Executed_1(object sender, ExecutedRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            this.Close();
         }
+
     }
 }
