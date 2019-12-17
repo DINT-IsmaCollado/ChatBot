@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker;
+using Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,19 @@ namespace ChatBot
     /// </summary>
     public partial class MainWindow : Window
     {
+        QnAMakerRuntimeClient cliente;
+        string Id;
+        List<Mensaje> listaMensajes;
+
         public MainWindow()
         {
             InitializeComponent();
+            string EndPoint = "https://botisma.azurewebsites.net";
+            string Key = "38249f96-77a1-46e2-adf4-f29195b93211";
+            Id = "e3c48047-80d3-4450-9231-ed4d0985840d";
+            cliente = new QnAMakerRuntimeClient(new EndpointKeyServiceClientCredentials(Key)) { RuntimeEndpoint = EndPoint };
+            listaMensajes = new List<Mensaje>();
+            //MensajesItemsControl.DataContext = listaMensajes;
         }
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -35,6 +47,20 @@ namespace ChatBot
         private void CommandBinding_Executed_1(object sender, ExecutedRoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private async void Send_MessageAsync(object sender, RoutedEventArgs e)
+        {
+            string pregunta = MessageTextBox.Text;
+
+            Mensaje mensajeEnviado = new Mensaje(pregunta, false);
+            listaMensajes.Add(mensajeEnviado);
+
+            QnASearchResultList response = await cliente.Runtime.GenerateAnswerAsync(Id, new QueryDTO { Question = pregunta });
+            string respuesta = response.Answers[0].Answer;
+
+            Mensaje mensajeBot = new Mensaje(respuesta, true);
+            listaMensajes.Add(mensajeBot);
         }
 
     }

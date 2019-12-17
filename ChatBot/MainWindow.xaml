@@ -13,6 +13,10 @@
             <MenuItem Header="Copiar"></MenuItem>
             <MenuItem Header="Pegar"></MenuItem>
         </ContextMenu>
+
+        <Style TargetType="ItemsControl">
+            
+        </Style>
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding
@@ -89,16 +93,28 @@
 
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Width="400" Height="35">
             <Border  Width="350" BorderThickness="2" BorderBrush="LightBlue">
-                <TextBox VerticalAlignment="Center" ContextMenu="{StaticResource EdicionContextMenu}"></TextBox>
+                <TextBox x:Name="MessageTextBox" VerticalAlignment="Center" ContextMenu="{StaticResource EdicionContextMenu}"></TextBox>
             </Border>
-            
-            <Button>
+
+            <Button Click="Send_MessageAsync" IsDefault="True">
                 <Image Source="Imagenes/sendIcon.ico"></Image>
             </Button>
         </StackPanel>
 
-        <ItemsControl Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorFondo}">
-            
+        <ItemsControl x:Name="MensajesItemsControl"  Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorFondo}">
+            <ItemContainerTemplate>
+                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorUsuario}" Width="200" HorizontalAlignment="Left" CornerRadius="15" BorderBrush="Black">
+                    <StackPanel  Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Imagenes/user.ico" Width="16" Height="16" VerticalAlignment="Top"></Image>
+                            <TextBlock Text="Usuario"></TextBlock>
+                        </StackPanel>
+                        <TextBlock Text="Mensaje Prueba"></TextBlock>
+                    </StackPanel>
+                </Border>
+            </ItemContainerTemplate>
         </ItemsControl>
+
+
     </DockPanel>
 </Window>

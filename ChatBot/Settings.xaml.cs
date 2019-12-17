@@ -35,14 +35,14 @@ namespace ChatBot
         private void Aceptar_Click(object sender, RoutedEventArgs e)
         {           
             
-            Properties.Settings.Default.ColorFondo = FondoComboBox.SelectedItem.ToString();
-            //Properties.Settings.Default.ColorRobot = RobotComboBox.SelectedValue.ToString();
-            //Properties.Settings.Default.ColorUsuario = RobotComboBox.SelectedValue.ToString();
+            Properties.Settings.Default.ColorFondo = FondoComboBox.SelectedItem.ToString().Split(' ').Last();
+            Properties.Settings.Default.ColorRobot = RobotComboBox.SelectedItem.ToString().Split(' ').Last();
+            Properties.Settings.Default.ColorUsuario = UsuarioComboBox.SelectedItem.ToString().Split(' ').Last();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         
