@@ -31,5 +31,16 @@ namespace ChatBot
                 }
             );
 
+        public static readonly RoutedUICommand CheckConnection = new RoutedUICommand
+            (
+                "CheckConnection",
+                "CheckConnection",
+                typeof(CustomCommands),
+                new InputGestureCollection()
+                {
+                    new KeyGesture(Key.O, ModifierKeys.Control)
+                }
+            );
+
     }
 }

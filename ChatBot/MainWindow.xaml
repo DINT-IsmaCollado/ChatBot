@@ -29,16 +29,34 @@
             Executed="CommandBinding_Executed_1">
             
         </CommandBinding>
+
+        <CommandBinding
+            Command="local:CustomCommands.CheckConnection"
+            Executed="CommandBinding_Executed_2">
+           
+        </CommandBinding>
+
+        <CommandBinding
+            Command="ApplicationCommands.New"
+            Executed="CommandBinding_Executed_2"
+            CanExecute="CommandBinding_CanExecute">
+
+        </CommandBinding>
+
+        <CommandBinding
+            Command="ApplicationCommands.Save"
+            Executed="CommandBinding_Executed_3"
+            CanExecute="CommandBinding_CanExecute_1"></CommandBinding>
     </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Archivo">
-                <MenuItem Header="_Nueva Conversacion">
+                <MenuItem Header="_Nueva Conversacion" Command="ApplicationCommands.New">
                     <MenuItem.Icon>
                         <Image Source="Imagenes/newIcon.ico"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Guardar Conversacion">
+                <MenuItem Header="_Guardar Conversacion" Command="ApplicationCommands.Save">
                     <MenuItem.Icon>
                         <Image Source="Imagenes/saveIcon.ico"/>
                     </MenuItem.Icon>
@@ -61,7 +79,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem Header="C_omprobar Conexión">
+                <MenuItem Header="C_omprobar Conexión" Command="local:CustomCommands.CheckConnection">
                     <MenuItem.Icon>
                         <Image Source="Imagenes/CheckIcon.ico"></Image>
                     </MenuItem.Icon>
@@ -71,17 +89,17 @@
 
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
-                <Button>
+                <Button Command="ApplicationCommands.New">
                     <Image Source="Imagenes/newIcon.ico"></Image>
                 </Button>
-                <Button>
+                <Button Command="ApplicationCommands.Save">
                     <Image Source="Imagenes/saveIcon.ico"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="local:CustomCommands.OpenSettings">
                     <Image Source="Imagenes/settingsIcon.ico"></Image>
                 </Button>
-                <Button>
+                <Button Command="local:CustomCommands.CheckConnection">
                     <Image Source="Imagenes/checkIcon.ico"></Image>
                 </Button>
                 <Separator/>
@@ -103,7 +121,7 @@
 
         <ItemsControl x:Name="MensajesItemsControl"  Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorFondo}">
             <ItemContainerTemplate>
-                <Border Background="{Binding Source={x:Static properties:Settings.Default}, Path=ColorUsuario}" Width="200" HorizontalAlignment="Left" CornerRadius="15" BorderBrush="Black">
+                <Border Width="200" HorizontalAlignment="Left" CornerRadius="15" BorderBrush="Black">
                     <StackPanel  Margin="10">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Imagenes/user.ico" Width="16" Height="16" VerticalAlignment="Top"></Image>
